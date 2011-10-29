@@ -4,6 +4,7 @@
 
 package mbti;
 
+import java.awt.Font;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -132,6 +133,7 @@ public class MBTIView extends FrameView {
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
+        jTextArea1.setBackground(resourceMap.getColor("jTextArea1.background")); // NOI18N
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
         jTextArea1.setFont(resourceMap.getFont("jTextArea1.font")); // NOI18N
@@ -179,11 +181,13 @@ public class MBTIView extends FrameView {
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
+        txaStatement.setBackground(resourceMap.getColor("txaStatement.background")); // NOI18N
         txaStatement.setColumns(20);
         txaStatement.setEditable(false);
         txaStatement.setFont(resourceMap.getFont("txaStatement.font")); // NOI18N
         txaStatement.setLineWrap(true);
         txaStatement.setRows(5);
+        txaStatement.setDoubleBuffered(true);
         txaStatement.setName("txaStatement"); // NOI18N
         jScrollPane2.setViewportView(txaStatement);
 
@@ -236,8 +240,8 @@ public class MBTIView extends FrameView {
     private void Selected(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Selected
         // TODO add your handling code here:
         Object source = evt.getSource();
-        for(;;)
-        {
+        
+       
         if(source == rbtnSelectA)
         {
             MBTIApp.MBTIRuslt.Add(currentQuestion.getSelectAParameter());
@@ -248,20 +252,26 @@ public class MBTIView extends FrameView {
         }
 
         MBTIApp.questionIndex ++;
-        if(MBTIApp.questionIndex >= MBTIApp.StepAll[MBTIApp.stepIndex].length)
-        {
-            MBTIApp.questionIndex = 0;
-            MBTIApp.stepIndex ++;
-        }
-        
         if(MBTIApp.stepIndex < MBTIApp.StepAll.length)
         {
-            LoadNewQuestion();
+            if(MBTIApp.questionIndex >= MBTIApp.StepAll[MBTIApp.stepIndex].length)
+            {
+                MBTIApp.questionIndex = 0;
+                MBTIApp.stepIndex ++;
+            }
+            
+            if(MBTIApp.stepIndex < MBTIApp.StepAll.length)
+            {
+                LoadNewQuestion();
+            }
+            else
+            {
+                ShowStatement();
+            }
         }
         else
         {
-            ShowStatement();
-        }
+            JOptionPane.showMessageDialog(this.getComponent(), "Sorry~ 出错了！");
         }
     }//GEN-LAST:event_Selected
 
@@ -309,6 +319,22 @@ public class MBTIView extends FrameView {
     private void ShowStatement(){
         
         MBTITypes type = MBTIApp.MBTIRuslt.getType();
+        //Font headFont = new Font("宋体",Font.BOLD,18);
+        //Font txtFont = new Font("宋体",Font.PLAIN,18);
+
+        txaStatement.append("您的类型是："+type.toString() + "\n\n");
+
+        txaStatement.append("【特征】\n");
+        txaStatement.append(MBTIStatements.getCharacteristics(type) + "\n\n");
+        
+        txaStatement.append("【适合领域】\n");
+        txaStatement.append(MBTIStatements.getAreas(type) + "\n\n");
+        
+        txaStatement.append("【适合职业】\n");
+        txaStatement.append(MBTIStatements.getJobs(type) + "\n\n");
+        
+        txaStatement.append("【详细描述】\n");
+        txaStatement.append(MBTIStatements.getDescribes(type) + "\n\n");
         
         this.jframe.getContentPane().removeAll();
         this.jframe.getContentPane().add(panResult);//JPanel换成自己的panel

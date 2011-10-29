@@ -150,6 +150,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextArea1">
               <Properties>
+                <Property name="background" type="java.awt.Color" resourceKey="jTextArea1.background"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jTextArea1.font"/>
@@ -222,11 +223,13 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txaStatement">
               <Properties>
+                <Property name="background" type="java.awt.Color" resourceKey="txaStatement.background"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" resourceKey="txaStatement.font"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="doubleBuffered" type="boolean" value="true"/>
                 <Property name="name" type="java.lang.String" value="txaStatement" noResource="true"/>
               </Properties>
             </Component>
