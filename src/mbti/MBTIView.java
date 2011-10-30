@@ -4,17 +4,8 @@
 
 package mbti;
 
-import java.awt.Font;
-import org.jdesktop.application.Action;
-import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.FrameView;
-import org.jdesktop.application.TaskMonitor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
-import javax.swing.Icon;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -61,9 +52,9 @@ public class MBTIView extends FrameView {
         jLabel2 = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
 
-        panQuestion.setMinimumSize(new java.awt.Dimension(500, 200));
+        panQuestion.setMinimumSize(new java.awt.Dimension(500, 260));
         panQuestion.setName("panQuestion"); // NOI18N
-        panQuestion.setPreferredSize(new java.awt.Dimension(500, 200));
+        panQuestion.setPreferredSize(new java.awt.Dimension(500, 260));
 
         buttonGroup1.add(rbtnSelectA);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(mbti.MBTIApp.class).getContext().getResourceMap(MBTIView.class);
@@ -99,13 +90,17 @@ public class MBTIView extends FrameView {
         panQuestionLayout.setHorizontalGroup(
             panQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panQuestionLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnSelectA)
-                    .addComponent(rbtnSelectB)
-                    .addComponent(labQuestion)
-                    .addComponent(labStep))
-                .addContainerGap(411, Short.MAX_VALUE))
+                    .addGroup(panQuestionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labStep))
+                    .addGroup(panQuestionLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(panQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnSelectB)
+                            .addComponent(rbtnSelectA)
+                            .addComponent(labQuestion))))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
         panQuestionLayout.setVerticalGroup(
             panQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +111,9 @@ public class MBTIView extends FrameView {
                 .addComponent(labQuestion)
                 .addGap(18, 18, 18)
                 .addComponent(rbtnSelectA)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rbtnSelectB)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         panMain.setMinimumSize(new java.awt.Dimension(800, 400));
@@ -140,6 +135,7 @@ public class MBTIView extends FrameView {
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("1、参加测试的人员请务必诚实、独立地回答问题，只有如此，才能得到有效的结果。 \n2、《性格分析报告》展示的是你的性格倾向，而不是你的知识、技能、经验。 \n3、MBTI提供的性格类型描述仅供测试者确定自己的性格类型之用，性格类型没有好坏，只有不同。每一种性格特征都有其价值和优点，也有缺点和需要注意的地方。清楚地了解自己的性格优劣势，有利于更好地发挥自己的特长，而尽可能的在为人处事中避免自己性格中的劣势，更好地和他人相处，更好地作重要的决策。 \n4、本软件提供的MBTI-M量表题目数量为93题，时间大约为20分钟。所有题目没有对错之分，请根据自己的实际情况选择。 \n\n*只要你是认真、真实地填写了测试问卷，那么通常情况下你都能得到一个确实和你的性格相匹配的类型。希望你能从中或多或少地获得一些有益的信息。\n"); // NOI18N
+        jTextArea1.setDoubleBuffered(true);
         jTextArea1.setName("jTextArea1"); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -157,23 +153,27 @@ public class MBTIView extends FrameView {
         panMainLayout.setHorizontalGroup(
             panMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panMainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnStart)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
-                .addContainerGap())
+                .addGroup(panMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panMainLayout.createSequentialGroup()
+                        .addGap(332, 332, 332)
+                        .addGroup(panMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel1)
+                            .addComponent(btnStart)))
+                    .addGroup(panMainLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)))
+                .addGap(10, 10, 10))
         );
         panMainLayout.setVerticalGroup(
             panMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panMainLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnStart)
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
 
         panResult.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -299,7 +299,7 @@ public class MBTIView extends FrameView {
         this.jframe.getContentPane().validate();
         
         this.jframe.getContentPane().repaint();
-        this.jframe.setSize(500, 230);
+        this.jframe.setSize(500, 300);
         this.jframe.setLocationRelativeTo(null);
     }
     /*
@@ -307,11 +307,15 @@ public class MBTIView extends FrameView {
      */
     private void LoadNewQuestion(){        
         currentQuestion =MBTIApp.StepAll[MBTIApp.stepIndex][MBTIApp.questionIndex];
-        if(currentQuestion != null){            
-            labQuestion.setText(currentQuestion.getQuestionString());
-            rbtnSelectA.setText(currentQuestion.getSelectAString());
-            rbtnSelectB.setText(currentQuestion.getSelectBString());
-        }      
+        if(currentQuestion != null){
+            if(MBTIApp.questionIndex == 0)
+            {
+                labStep.setText("<html>" + MBTIApp.StepStrings[MBTIApp.stepIndex] + "</html>");
+            }
+            labQuestion.setText("<html>" + currentQuestion.getQuestionString() + "</html>");
+            rbtnSelectA.setText("<html>" + currentQuestion.getSelectAString() + "</html>");
+            rbtnSelectB.setText("<html>" + currentQuestion.getSelectBString() + "</html>");
+        }  
     }
     /*
      * 显示测试报告
@@ -319,8 +323,6 @@ public class MBTIView extends FrameView {
     private void ShowStatement(){
         
         MBTITypes type = MBTIApp.MBTIRuslt.getType();
-        //Font headFont = new Font("宋体",Font.BOLD,18);
-        //Font txtFont = new Font("宋体",Font.PLAIN,18);
 
         txaStatement.append("您的类型是："+type.toString() + "\n\n");
 
@@ -343,7 +345,6 @@ public class MBTIView extends FrameView {
         this.jframe.getContentPane().repaint();
         this.jframe.setSize(800,600);
         this.jframe.setLocationRelativeTo(null); 
-        this.jframe.setResizable(true);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
