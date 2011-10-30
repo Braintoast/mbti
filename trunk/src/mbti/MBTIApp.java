@@ -55,6 +55,7 @@ public class MBTIApp extends SingleFrameApplication {
     private static MBTIQuestion[] Step2;
     private static MBTIQuestion[] Step3;
     private static MBTIQuestion[] Step4;
+    public static String[] StepStrings;
     
     /*
      * 初始化测试参数
@@ -68,11 +69,21 @@ public class MBTIApp extends SingleFrameApplication {
 
     private static void InitStepAll()
     {
+        InitStepStrings();
         InitStep1();
         InitStep2();
         InitStep3();
         InitStep4();
         StepAll = new MBTIQuestion[][]{Step1, Step2, Step3, Step4};
+    }
+    private static void InitStepStrings(){
+        
+        StepStrings = new String[]{
+          "第一部分：本部分共26题，每题会给出一组词语或短语。要求从四个选项中选择您更愿意接受或喜欢的一个。请考虑这些词的含义，而不是好听与否。",
+          "第二部分：本部分共27题，每题会给出一组词语或短语，要求从四个选项中选择您更愿意接受或喜欢的一个，请考虑这些词的含义，而不是好听与否。 ",
+          "第三部分：本部分共20题,每题会给出两个陈述，要求从四个选项中选择最符合你自身情况的。",
+          "第四部分：本部分共20题，每题会给出一组词语或短语，要求从四个选项中选择您更愿意接受或喜欢的一个，请考虑这些词的含义，而不是好听与否。",
+        };
     }
     private static void InitStep1(){
 
