@@ -19,7 +19,7 @@ public class MBTIView extends FrameView {
     
     public MBTIView(SingleFrameApplication app) {
         super(app);
-
+        
         initComponents();
         
         this.jframe = this.getFrame();
@@ -277,7 +277,7 @@ public class MBTIView extends FrameView {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
-        StartTest();
+        StartTest();  
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

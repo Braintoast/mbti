@@ -4,7 +4,9 @@
 
 package mbti;
 
+import java.awt.Image;
 import org.jdesktop.application.Application;
+import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 
 /**
@@ -30,6 +32,10 @@ public class MBTIApp extends SingleFrameApplication {
      * builder, so this additional configuration is not needed.
      */
     @Override protected void configureWindow(java.awt.Window root) {
+        
+        ResourceMap resourceMap = getContext().getResourceMap(MBTIView.class);  
+        Image image = resourceMap.getImageIcon("TitleBar.Icon").getImage();  
+        root.setIconImage(image); 
     }
 
     /**
